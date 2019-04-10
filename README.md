@@ -228,3 +228,7 @@ scannerRectCornerColor | string | Yes      | `#09BB0D` | determines the color of
 [1]: https://github.com/zxing/zxing
 [2]: http://cyqresig.github.io/img/react-native-smart-barcode-preview-ios-v1.0.0.gif
 [3]: http://cyqresig.github.io/img/react-native-smart-barcode-preview-android-v1.0.0.gif
+
+## RN Compatibility Update
+
+Added compatibility for React Native 0.55 - according to [2b-dev solution](https://github.com/react-native-component/react-native-smart-barcode/issues/9#issuecomment-391250188).
