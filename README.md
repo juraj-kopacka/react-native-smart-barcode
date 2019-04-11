@@ -229,6 +229,43 @@ scannerRectCornerColor | string | Yes      | `#09BB0D` | determines the color of
 [2]: http://cyqresig.github.io/img/react-native-smart-barcode-preview-ios-v1.0.0.gif
 [3]: http://cyqresig.github.io/img/react-native-smart-barcode-preview-android-v1.0.0.gif
 
-## RN Compatibility Update
 
-Added compatibility for React Native 0.55 - according to [2b-dev solution](https://github.com/react-native-component/react-native-smart-barcode/issues/9#issuecomment-391250188).
+#### Updated installation/configuration steps (Android):
+* install
+```
+yarn add react-native-smart-barcode@https://github.com/backbonesk/react-native-smart-barcode.git#forRN0.55
+```
+```
+react-native link
+```
+* do not update MainApplication.java nor MainActivity.java (as stated in the original readme), it will be done automaticaly with the `react-native link` command
+* add Permission to AndroidManifest.xml
+
+```
+uses-permission android:name="android.permission.CAMERA"
+uses-permission android:name="android.permission.VIBRATE"
+uses-feature android:name="android.hardware.camera"
+uses-feature android:name="android.hardware.camera.autofocus"
+```
+
+* comment one `@Override` in RCTCapturePackage.java ( node_module/react-native-smart-barcode/android/src/main/java/com/reactnativecomponent/barcode/RCTCapturePackage.java )
+```
+// @Override
+public List<Class<? extends JavaScriptModule>> createJSModules() {
+    return Collections.emptyList();
+}
+```
+
+* in Barcode.js (in root folder) - use
+
+```
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instead of
+```
+import React, {
+    PropTypes,
+    Component,
+} from 'react'
+```
